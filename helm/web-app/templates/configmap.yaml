@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-html
+  namespace: {{ .Release.Namespace }}
+
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Plexus Tech | DevOps Lab</title>
+
+      <style>
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+          background: #003E57;
+          color: white;
+          text-align: center;
+        }
+
+        .container {
+          max-width: 700px;
+          margin: 100px auto;
+          padding: 40px;
+          background: #ffffff;
+          color: #003E57;
+          border-radius: 15px;
+        }
+
+        .logo {
+          width: 200px;
+          margin-bottom: 30px;
+        }
+
+        h1 {
+          margin-bottom: 10px;
+        }
+
+        .status {
+          color: #2f7d4a;
+          font-weight: bold;
+          margin: 25px 0;
+        }
+
+        .info {
+          margin: 10px 0;
+          padding: 10px;
+          background: #f1f5f7;
+          border-radius: 8px;
+        }
+
+        .footer {
+          margin-top: 30px;
+          font-size: 13px;
+          color: #667980;
+        }
+      </style>
+    </head>
+
+    <body>
+      <div class="container">
+
+        <img
+          class="logo"
+          src="https://cdn.brandfetch.io/idMKi-Trm2/w/300/h/104/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1781818131506"
+          alt="Plexus Tech"
+        >
+
+        <h1>Portal de Pedidos</h1>
+
+        <p>Laboratorio DevOps</p>
+
+        <div class="status">
+          ● Aplicación funcionando correctamente
+        </div>
+
+        <div class="info">
+          <strong>Entorno:</strong> {{ .Values.environment }}
+        </div>
+
+        <div class="info">
+          <strong>Release:</strong> {{ .Release.Name }}
+        </div>
+
+        <div class="info">
+          <strong>Réplicas:</strong> {{ .Values.replicaCount }}
+        </div>
+
+        <div class="info">
+          <strong>Namespace:</strong> {{ .Release.Namespace }}
+        </div>
+
+        <div class="footer">
+          Plexus Tech · Kubernetes + Helm
+        </div>
+
+      </div>
+    </body>
+    </html>
